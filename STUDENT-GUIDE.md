@@ -410,8 +410,9 @@ step first, and Vercel handles that automatically:
 serves static files as-is — it can't run a build step. Vercel builds
 your project (`npm run build`) before publishing it. You *can* still
 use GitHub Pages for a React site, but it takes an extra tool (the
-`gh-pages` package) — see `DEPLOYMENT.md` on the `main` branch if
-you'd rather do that.
+`gh-pages` package: `npm install -D gh-pages`, add a `"deploy": "npm
+run build && gh-pages -d dist"` script to `package.json`, then
+`npm run deploy`).
 
 ---
 
@@ -510,4 +511,4 @@ the Next.js team specifically to run this.
   copy a stage's `starter/` folder into a new project of your own.
 - To come back to any stage later: `git checkout <branch-name>` from
   inside the `Portfolio-Demo` folder — the branches are
-  `00-reference-original`, `01-html-css-js`, `02-react`, `03-nextjs`.
+  `01-html-css-js`, `02-react`, `03-nextjs`.
