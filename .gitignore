@@ -1,8 +1,1 @@
 .DS_Store
-
-# git worktrees for local facilitation (see session-plan.md) —
-# these are checkouts of other branches, not part of `main`
-/00-reference-original/
-/01-html-css-js/
-/02-react/
-/03-nextjs/

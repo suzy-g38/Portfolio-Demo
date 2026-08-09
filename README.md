@@ -39,31 +39,23 @@ has the full walkthrough for all three.
 
 ## Before the session
 
-Set up a worktree per stage branch, so all four are real folders you
-can flip between instantly without ever running `git checkout` live
-(full detail in `SCRIPT.md`'s pre-session setup section):
+Switching stages live via `git checkout` is deliberate — it's a real,
+visible demonstration of what a branch actually is (the files on disk
+*change*, live, in front of the room), not just a label. Full detail
+and exact transition timing in `SCRIPT.md`.
+
+Because of that, only one stage's files exist on disk at a time, and
+`node_modules/` (gitignored, not committed) needs reinstalling after
+each checkout into a React or Next.js branch — plan for that pause
+(it's a good moment to explain *why* `node_modules` isn't committed to
+git in the first place). Sanity-check each stage once beforehand so
+you know installs are fast from local npm cache on the day:
 
 ```bash
-git worktree add 00-reference-original 00-reference-original
-git worktree add 01-html-css-js 01-html-css-js
-git worktree add 02-react 02-react
-git worktree add 03-nextjs 03-nextjs
-```
-
-Then install dependencies (React and Next.js projects) —
-`node_modules/` isn't committed:
-
-```bash
-cd 02-react && npm install && cd starter && npm install && cd ../..
-cd 03-nextjs && npm install && cd starter && npm install && cd ../..
-```
-
-Sanity-check each stage's root (the deploy-ready version) runs:
-
-```bash
-cd 01-html-css-js && python3 -m http.server 8001   # http://localhost:8001
-cd ../02-react && npm run dev                       # http://localhost:5173
-cd ../03-nextjs && npm run dev                       # http://localhost:3000
+git checkout 01-html-css-js && python3 -m http.server 8001   # http://localhost:8001, no install needed
+git checkout 02-react && npm install && npm run dev            # http://localhost:5173
+git checkout 03-nextjs && rm -rf node_modules && npm install && npm run dev   # http://localhost:3000
+git checkout main
 ```
 
 ## Deploying

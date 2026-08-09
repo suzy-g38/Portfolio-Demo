@@ -12,27 +12,42 @@ turn-by-turn directions.
 - ⏭️ **SKIP** — don't explain this even if asked casually in passing; redirect if a question goes here
 - ⏱️ time marks assume a 2:00 start; adjust to your actual start time
 
+**On navigation:** stages are git branches, not folders. You move
+between them live with `git checkout <branch>` — deliberately, as a
+teaching moment (students watch the working directory actually change),
+not for convenience. That means only one stage's files exist on disk at
+a time, and `node_modules/` needs reinstalling after checking into a
+React or Next.js branch (it's gitignored, never committed). Budget the
+`npm install` pauses into the transitions below — they're marked.
+
 ---
 
 ## Pre-session setup (do this before students arrive, not live)
 
 ```bash
 cd TaruGurdian-Session
-git worktree list          # confirm all 4 worktrees exist
-cd 02-react && npm install && cd starter && npm install && cd ../..
-cd 03-nextjs && npm install && cd starter && npm install && cd ../..
+git branch                                     # confirm all 5 branches exist
+
+git checkout 01-html-css-js && cd starter      # no install needed, static site
+cd ..
+
+git checkout 02-react && npm install && cd starter && npm install && cd ..
+cd ..
+
+git checkout 03-nextjs && npm install && cd starter && npm install && cd ..
+cd ..
+
+git checkout 01-html-css-js                    # leave it staged here for the cold open
 ```
 
-Open terminal tabs, one per stage, `cd`'d into place and idle (don't
-start dev servers yet — starting them live is part of the show):
-1. `00-reference-original/`
-2. `01-html-css-js/starter/`
-3. `02-react/starter/` and `02-react/` (complete)
-4. `03-nextjs/starter/` and `03-nextjs/` (complete)
+This is a rehearsal, not a permanent setup — you're just confirming
+installs are fast from local npm cache on the actual day, and leaving
+the repo parked on Stage 1's branch so the cold open starts clean.
 
-Editor: open the whole `TaruGurdian-Session` folder as one workspace
-so you can jump between worktree folders in the sidebar without
-reopening windows.
+Editor: open the `TaruGurdian-Session` folder as one workspace — the
+file tree will visibly change contents every time you check out a
+different branch, which is fine and expected (point this out to
+students the first time it happens live).
 
 Browser tabs pre-opened: blank tabs for `localhost:8000`,
 `localhost:5173`, `localhost:3000` (you'll start servers into these),
@@ -43,12 +58,21 @@ and Vercel project connection ahead of time — see `DEPLOYMENT.md` — so
 the live deploy at the end is just running one command / clicking
 Import, not troubleshooting auth).
 
+**Cold-open caveat:** since the three deployed URLs only go live during
+the deployment walkthrough at the *end* of the session, you can't show
+"three finished versions side by side, deployed" at the cold open on
+the actual day. Either show them running locally (`python3 -m
+http.server` / `npm run dev`, one per branch, from a rehearsal earlier)
+or skip that beat and rely on the screenshot + verbal pitch instead.
+
 ---
 
 ## 0. Cold open — ⏱️ 2:00–2:05 (5 min)
 
-⌨️ **DO:** Open `00-reference-original/index.html` in the browser (or
-just show `MySite_Page.jpeg` full-screen if you'd rather not context-switch).
+⌨️ **DO:** You should already be on the `00-reference-original` branch
+(check out now if not: `git checkout 00-reference-original`). Open
+`index.html` in the browser (or just show `MySite_Page.jpeg`
+full-screen if you'd rather not context-switch).
 
 🗣️ **SAY:**
 > "This is the first website I ever built, back when I was learning
@@ -61,12 +85,21 @@ just show `MySite_Page.jpeg` full-screen if you'd rather not context-switch).
 not a polished agency template. That's the point: it's achievable
 today.
 
-⌨️ **DO:** Quickly flash the three finished versions if you have them
-running (or just narrate): "same site, three ways — vanilla, React,
-Next.js. We'll build toward all three."
-
 ⏭️ **SKIP:** Don't explain the workshop's full timing breakdown out
 loud — it creates clock-anxiety. Just move.
+
+⌨️ **DO:**
+```bash
+git checkout 01-html-css-js
+```
+🗣️ **SAY, as you run it:**
+> "Watch the file tree — I just switched git branches, and the files
+> on disk changed completely. That's not a metaphor, that's literally
+> what a branch is: a different version of the whole project, one
+> command away. We'll do this three more times today, once per stage."
+
+This is the first of several deliberate checkout moments — see them
+called out below wherever they happen again.
 
 ---
 
@@ -76,7 +109,7 @@ loud — it creates clock-anxiety. Just move.
 
 ⌨️ **DO:**
 ```bash
-cd 01-html-css-js/starter
+cd starter
 code .          # or however you open your editor
 python3 -m http.server 8000
 ```
@@ -100,9 +133,10 @@ from prerequisite courses. If someone asks, one sentence and move on.
 
 ### 1b. Live-code the CSS — ⏱️ 2:10–2:35 (25 min)
 
-⌨️ **DO:** Open `css/style.css` side-by-side with the browser tab.
-Refresh after each block below so the change is visible immediately —
-this is the single best way to keep the room's attention.
+⌨️ **DO:** Open `css/style.css` (inside `starter/`) side-by-side with
+the browser tab. Refresh after each block below so the change is
+visible immediately — this is the single best way to keep the room's
+attention.
 
 Type these **in this order**, pausing ~90 seconds after each for the
 room to catch up:
@@ -242,7 +276,7 @@ worth noticing. It changes a lot once we get to React."
 ### 1c. Personalize — ⏱️ 2:35–2:45 (10 min)
 
 🗣️ **SAY:** "Now make it yours — five minutes, heads down." Walk the
-room while they edit `index.html`:
+room while they edit `starter/index.html`:
 - `<h1>I'm Your Name</h1>` → their name
 - `<h3>your role</h3>` → what they're studying / building
 - The `profile-description` paragraph → 2–3 real sentences
@@ -254,7 +288,7 @@ and eats time for no teaching value. Mention it's possible, move on.
 
 ### 1d. Live-code the JavaScript — ⏱️ 2:45–2:55 (10 min)
 
-⌨️ **DO:** Open `js/script.js`.
+⌨️ **DO:** Open `starter/js/script.js`.
 
 🗣️ **SAY:** "Everything so far — HTML says what's on the page, CSS
 says how it looks. JavaScript is the only one of the three that can
@@ -324,9 +358,31 @@ polished dark mode.
 
 ## Stage 2 — React — ⏱️ 2:55–3:25 (30 min)
 
+### Transition: Stage 1 → Stage 2
+
+⌨️ **DO:** Stop the Stage 1 server (Ctrl+C in its terminal). Then:
+```bash
+cd ..              # back to the repo root, out of starter/
+git checkout 02-react
+npm install
+```
+
+🗣️ **SAY, while `npm install` runs:**
+> "Same move as the cold open — I'm checking out a different branch,
+> and the whole project just became something else. Notice we have to
+> reinstall dependencies here, where Stage 1 needed nothing. That's
+> because `node_modules` — the folder holding every package your code
+> depends on — is never committed to git. It's huge, it's fully
+> derivable from `package.json`, and it can differ per platform. Every
+> JavaScript project you'll ever clone starts with `npm install` for
+> exactly this reason."
+
+This is real dead time (10–30 seconds) — use it for the talking point
+above rather than standing there silently.
+
 ⌨️ **DO:**
 ```bash
-cd ../../02-react/starter
+cd starter
 npm run dev
 ```
 Open the printed URL (usually `http://localhost:5173`).
@@ -361,11 +417,15 @@ server works under the hood. Not today's topic.
 
 ### 2b. Declarative vs. imperative — ⏱️ 3:00–3:10 (10 min)
 
-⌨️ **DO:** Open `02-react/` (the finished root, not `starter/`) in a
-second editor tab or split view. Open `src/components/Footer.jsx`
-next to Stage 1's `01-html-css-js/js/script.js`.
+⌨️ **DO:** Open a second editor tab on the branch root (`cd ..` from
+`starter/` in a second terminal, no need to check out again — the root
+and `starter/` coexist on disk once you're on this branch). Open the
+root's `src/components/Footer.jsx` next to Stage 1's `js/script.js`
+(you'll need to recall its contents from memory or a note — it's not
+on disk right now since Stage 1's branch isn't checked out anymore;
+this is a good moment to say so out loud, see the emphasize note below).
 
-🗣️ **SAY, pointing at both side by side:**
+🗣️ **SAY, pointing at both:**
 > Stage 1:
 > ```js
 > document.getElementById('year').textContent = new Date().getFullYear();
@@ -385,6 +445,14 @@ of the whole workshop. Say it plainly, maybe twice, in slightly
 different words. Ask: *"Who can tell me back, in their own words, what
 'declarative' means here?"*
 
+🔦 **EMPHASIZE (small aside, optional):** if a student asks to see
+Stage 1's file again, that's a great excuse to name the tradeoff
+directly: *"This is the cost of the branch-per-stage setup — I can't
+have two stages open on disk at once. In a real project you'd keep
+these as separate folders or repos if you needed to compare them side
+by side constantly. For today, we're trading that convenience for
+seeing branches do something real."*
+
 ### 2c. The componentization payoff — ⏱️ 3:10–3:20 (10 min)
 
 This is the centerpiece of Stage 2 — protect this time block above all
@@ -396,8 +464,8 @@ two hardcoded, nearly-identical `<div className="skill-row">` blocks.
 🗣️ **SAY:** "Two skills, so two copy-pasted blocks. Fine for two. What
 about ten?"
 
-⌨️ **DO:** Now open the *complete* version's two files side by side:
-`02-react/src/components/Skill.jsx`:
+⌨️ **DO:** Now open the *branch root's* two files side by side:
+`src/components/Skill.jsx`:
 ```jsx
 function Skill({ image, imageClass, title, description }) {
   return (
@@ -409,7 +477,7 @@ function Skill({ image, imageClass, title, description }) {
   )
 }
 ```
-and `02-react/src/components/Skills.jsx`:
+and `src/components/Skills.jsx`:
 ```jsx
 const skills = [
   { id: 'html-css-js', image: './images/computer.png', imageClass: 'image-computer',
@@ -446,13 +514,13 @@ sentence and move on. Don't derail into prop-types or TypeScript.
 
 ### 2d. Same idea, packaged differently — ⏱️ 3:20–3:25 (5 min)
 
-⌨️ **DO:** Open `02-react/src/useTheme.js` next to Stage 1's dark-mode
-code in `01-html-css-js/js/script.js`.
+⌨️ **DO:** Open the branch root's `src/useTheme.js`.
 
 🗣️ **SAY:** "Same two browser APIs — `localStorage` and
-`classList.toggle` — same logic. The only difference is it's now
-wrapped in a function called `useTheme()` that any component can call.
-React doesn't replace what you learned in Stage 1. It organizes it."
+`classList.toggle` — same logic as Stage 1's dark-mode code, if you
+recall it. The only difference is it's now wrapped in a function
+called `useTheme()` that any component can call. React doesn't replace
+what you learned in Stage 1. It organizes it."
 
 ⌨️ **DO:** Toggle dark mode live in the browser, resize the window a
 bit. Let it be visibly *the same site* as Stage 1, running differently
@@ -462,9 +530,28 @@ underneath.
 
 ## Stage 3 — Next.js — ⏱️ 3:25–3:50 (25 min)
 
+### Transition: Stage 2 → Stage 3
+
+⌨️ **DO:** Stop Stage 2's server. Then:
+```bash
+cd ..               # back to the repo root, out of starter/
+git checkout 03-nextjs
+rm -rf node_modules
+npm install
+```
+
+🗣️ **SAY, while it runs:**
+> "Same branch switch as before, but notice the extra step —
+> `rm -rf node_modules` before installing. Stage 2's React packages
+> are still sitting in that folder from a minute ago, and git doesn't
+> touch it on checkout because it was never tracked. Left alone, we'd
+> be running Next.js with React's leftover dependencies, which breaks.
+> Deleting first forces a clean install that actually matches this
+> branch's `package.json`."
+
 ⌨️ **DO:**
 ```bash
-cd ../../03-nextjs/starter
+cd starter
 npm run dev
 ```
 Open `http://localhost:3000`.
@@ -477,8 +564,8 @@ Open `http://localhost:3000`.
 
 ### 3b. File-based routing — ⏱️ 3:30–3:38 (8 min)
 
-⌨️ **DO:** Open `03-nextjs/app/page.js` and `03-nextjs/app/projects/page.js`
-(the *complete* version — starter doesn't have this page yet).
+⌨️ **DO:** Open the *branch root's* `app/page.js` and
+`app/projects/page.js` (`starter/` doesn't have this page yet).
 
 🗣️ **SAY:**
 > "In plain React, if you want a second page, you install a router
@@ -502,7 +589,7 @@ nested layouts — worth exploring on your own."
 
 ### 3c. Fonts, metadata, and where code runs — ⏱️ 3:38–3:44 (6 min)
 
-⌨️ **DO:** Open `03-nextjs/app/layout.js`.
+⌨️ **DO:** Open the branch root's `app/layout.js`.
 
 🗣️ **SAY:** "Two things happening in this one file that used to be
 separate concerns in Stages 1 and 2:"
@@ -538,8 +625,8 @@ reaches the browser — we'll see exactly what that buys us in a minute."
 This is Stage 3's version of Stage 2's "componentization payoff" —
 give it real weight.
 
-⌨️ **DO:** Open `03-nextjs/app/components/ThemeToggle.jsx`. Point at
-line 1:
+⌨️ **DO:** Open the branch root's `app/components/ThemeToggle.jsx`.
+Point at line 1:
 ```jsx
 'use client'
 ```
@@ -553,10 +640,11 @@ line 1:
 > HTML on the server and ship *zero* JavaScript to the browser."
 
 🔦 **EMPHASIZE — do this live if you have two minutes to spare:**
-Open browser dev tools → Network tab, reload the Next.js page, then
-reload the Stage 2 React page next to it. Point at the JS bundle size
-difference. *"Stage 2 ships one big JS bundle just to render text.
-Stage 3 ships almost nothing — just enough to run this one button."*
+Open browser dev tools → Network tab, reload the Next.js page. Point at
+the JS bundle size. If you still have the Stage 2 deployed URL or a
+screenshot handy, compare against it. *"Stage 2 ships one big JS
+bundle just to render text. Stage 3 ships almost nothing — just enough
+to run this one button."*
 
 If you don't have time for the live Network tab demo, say the same
 point verbally and move on — don't let this overrun into deployment
@@ -595,7 +683,7 @@ through Stage 2's setup, then come back and show it's live.
 
 ⌨️ **DO:**
 ```bash
-cd 02-react   # the complete/root worktree, not starter
+cd ..                # from starter/ back to the 02-react branch root
 npm run deploy
 ```
 🗣️ **SAY, while it runs:** "This one command does two things: builds
@@ -628,8 +716,8 @@ don't just answer them yourself):**
 🗣️ **SAY:**
 > "The repo has a branch per stage, each with a `starter/` folder
 > inside it — if you want to redo any of this on your own, that's
-> where to start. I'll drop the repo link and the three live URLs in
-> the chat/group now."
+> where to start: `git checkout <branch-name>`. I'll drop the repo
+> link and the three live URLs in the chat/group now."
 
 ⌨️ **DO:** Share the repo link and the three deployed URLs.
 
@@ -648,7 +736,9 @@ don't just answer them yourself):**
 
 **Never cut:** the Stage 2 `Skills.jsx`/`Skill.jsx` reveal (§2c) or the
 Stage 3 `'use client'` reveal (§3d) — these are the two moments that
-actually justify the whole workshop's premise.
+actually justify the whole workshop's premise. Also never skip the
+`npm install` / `rm -rf node_modules && npm install` steps in the
+transitions — without them the dev servers simply won't start.
 
 ## If you're running ahead of schedule (add in this order)
 
@@ -656,9 +746,10 @@ actually justify the whole workshop's premise.
 2. Add a third skill to the React `skills` array live (§2c) — since
    it's now just one array entry, this takes 30 seconds and makes the
    payoff concrete.
-3. Open `03-nextjs/app/globals.css` and point out it's the *same* CSS
-   skills from Stage 1, just referencing fonts via `var(--font-...)`
-   instead of hardcoded family names — full-circle moment.
+3. Open the Stage 3 branch root's `app/globals.css` and point out it's
+   the *same* CSS skills from Stage 1, just referencing fonts via
+   `var(--font-...)` instead of hardcoded family names — full-circle
+   moment.
 4. Show `git log --all --oneline --graph` in the terminal — the whole
    workshop's history as five branches, visually.
 
@@ -667,25 +758,37 @@ actually justify the whole workshop's premise.
 ## Full command reference (everything you'll type, in order)
 
 ```bash
-# Pre-session
+# Pre-session rehearsal (not part of the live session)
 cd TaruGurdian-Session
-git worktree list
-cd 02-react && npm install && cd starter && npm install && cd ../..
-cd 03-nextjs && npm install && cd starter && npm install && cd ../..
+git checkout 01-html-css-js && cd starter && cd ..
+git checkout 02-react && npm install && cd starter && npm install && cd ..
+cd ..
+git checkout 03-nextjs && npm install && cd starter && npm install && cd ..
+cd ..
+git checkout 01-html-css-js
+
+# Cold open (already on 01-html-css-js)
 
 # Stage 1
-cd 01-html-css-js/starter
+cd starter
 python3 -m http.server 8000
 
-# Stage 2
-cd ../../02-react/starter
+# Transition to Stage 2
+cd ..
+git checkout 02-react
+npm install
+cd starter
 npm run dev
 
-# Stage 3
-cd ../../03-nextjs/starter
+# Transition to Stage 3
+cd ..
+git checkout 03-nextjs
+rm -rf node_modules
+npm install
+cd starter
 npm run dev
 
-# Deploy — Stage 2
-cd ../../02-react
+# Deploy — Stage 2 (from the 02-react branch root, not starter/)
+cd ..
 npm run deploy
 ```
