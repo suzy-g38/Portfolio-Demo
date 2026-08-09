@@ -1,0 +1,65 @@
+/* ============================================
+   Same CSS skills as Stage 1 — just now living
+   inside a React project. Compare against
+   ../src/index.css (this branch's root) if stuck.
+============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #00416d;
+}
+
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-size: 5.62rem;
+  margin-top: 50px;
+}
+
+h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+
+h2 {
+  padding-bottom: 10px;
+}
+
+p {
+  line-height: 2;
+}
+
+a {
+  color: #00416d;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+hr {
+  border: dotted 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto;
+}
+
+/* ============================================
+   TODO — same layout goals as Stage 1, in the
+   same classNames (React uses className instead
+   of class, everything else about CSS is
+   identical):
+
+   1. .top-container, #top-cloud, #bottom-cloud,
+      #mountain  -> hero layout
+   2. .middle-container, .profile-description
+   3. .skill-row, .image-computer, .image-chillies
+   4. .btn / .btn:hover
+   5. .bottom-container, .copyright
+
+   Reference screenshot: MySite_Page.jpeg on the 00-reference-original branch
+============================================ */
