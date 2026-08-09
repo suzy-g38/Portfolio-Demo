@@ -36,19 +36,37 @@ git checkout 01-html-css-js
 cd starter
 ```
 
-Open the `Portfolio-Demo` folder in your code editor. Open `index.html`
-— it's already split into five sections (hero, hello, skills, contact,
-footer), each marked with a `TODO` comment. Those comments are your
-guide for the rest of this stage.
+**Everything for this stage — editing, previewing, all of it — happens
+inside this `starter/` folder.** Open the whole `Portfolio-Demo` folder
+in your code editor, then open `starter/index.html` — it's already
+split into five sections (hero, hello, skills, contact, footer), each
+marked with a `TODO` comment. Those comments are your guide for the
+rest of this stage.
 
-Start a local server so you can see the page in a browser:
+Now preview it in a browser. Pick whichever of these is easiest on
+your machine — they all show the same page, just choose one:
 
-```bash
-python3 -m http.server 8000
-```
+- **Simplest, no setup:** find `starter/index.html` in your file
+  explorer/Finder and double-click it. It opens directly in your
+  browser — no terminal needed. This works because the page doesn't
+  fetch anything that requires a real server, so opening the file
+  directly is perfectly fine here.
+- **Auto-refreshes on save:** if you're using VS Code, install the
+  "Live Server" extension, right-click `starter/index.html` in the
+  file explorer, and choose "Open with Live Server." The page reloads
+  automatically every time you save — handy while live-coding the CSS
+  below.
+- **Terminal, if you prefer it:** from inside `starter/`,
+  ```bash
+  python3 -m http.server 8000
+  ```
+  then open **http://localhost:8000**. Note: on Windows this command
+  is sometimes `python` instead of `python3` (or Python may not be
+  installed at all) — if it doesn't run, use one of the two options
+  above instead.
 
-Open **http://localhost:8000** in your browser. It'll look like plain
-unstyled text right now — that's expected, styling comes next.
+It'll look like plain unstyled text right now — that's expected,
+styling comes next.
 
 ### Style it — `css/style.css`
 
