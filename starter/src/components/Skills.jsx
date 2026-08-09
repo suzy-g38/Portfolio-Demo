@@ -4,7 +4,7 @@
 // STRETCH GOAL (this is where React really shines): once you have
 // this working, try turning these two hardcoded blocks into an
 // array of skill objects + a reusable <Skill /> component that you
-// .map() over. Peek at ../src/components/Skills.jsx (this branch's root)
+// .map() over. Peek at ../completed/src/components/Skills.jsx
 // after you've given it a try.
 function Skills() {
   return (

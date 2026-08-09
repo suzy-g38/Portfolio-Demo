@@ -17,8 +17,8 @@ Then open the URL Vite prints (usually http://localhost:5173).
 1. Style it — `src/index.css` (same `TODO`s as Stage 1, same class names).
 2. Fill in your info in each file under `src/components/`.
 3. Stretch goal: refactor `Skills.jsx` to map over an array of skill
-   objects instead of two hardcoded blocks — see the root version (one
-   level up, `../`) for the answer.
+   objects instead of two hardcoded blocks — see the sibling
+   `../completed/` folder for the answer.
 
 ## Why React, after just finishing plain HTML/CSS/JS?
 
@@ -33,5 +33,5 @@ Then open the URL Vite prints (usually http://localhost:5173).
 
 ## Stuck?
 
-Finished version: one level up, at the root of this branch (`../`) —
-that's also the version that gets deployed.
+Finished version: the sibling `../completed/` folder — that's also
+the version that gets deployed.
