@@ -1,6 +1,6 @@
 // ============================================
 // BOILERPLATE — this is where we add interactivity.
-// Compare against ../js/script.js (this branch's root)
+// Compare against ../completed/js/script.js
 // if you get stuck.
 // ============================================
 

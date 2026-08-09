@@ -16,9 +16,9 @@ auto-refresh on save).
 
 ## Stuck?
 
-The finished version lives one level up, at the root of this branch
-(`../`) — that's also the version that gets deployed. The original
-reference screenshot is on the `00-reference-original` branch
+The finished version lives in the sibling `../completed/` folder —
+that's also the version that gets deployed. The original reference
+screenshot is on the `00-reference-original` branch
 (`MySite_Page.jpeg`).
 
 ## Folder structure
