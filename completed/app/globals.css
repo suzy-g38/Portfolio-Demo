@@ -94,7 +94,8 @@ hr {
 
 .profile-description {
   margin: auto;
-  width: 30%;
+  width: 50%;
+  max-width: 640px;
 }
 
 .skills {

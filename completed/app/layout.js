@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 export const metadata = {
   title: 'Sulagna Ghosh — Portfolio',
   description:
-    'Frontend developer portfolio built with Next.js, as part of a workshop comparing HTML/CSS/JS, React, and Next.js.',
+    'Sulagna Ghosh — Solutions Engineer at Creowis and lead organiser of React Kolkata.',
 }
 
 export default function RootLayout({ children }) {

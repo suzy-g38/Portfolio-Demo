@@ -3,10 +3,17 @@ function About() {
     <div className="profile">
       <h2>Hello.</h2>
       <p className="profile-description">
-        I&apos;m a second-year CS student who loves turning ideas into things
-        people can click on. This site is built three times over — plain
-        HTML/CSS/JS, then React, then Next.js — to show how the same UI
-        evolves as the tools get more powerful.
+        Sulagna Ghosh is a Solutions Engineer at Creowis and the lead
+        organiser of React Kolkata, a community she grew to 2,000+
+        members in under a year. She&apos;ll be speaking at React
+        Advance London 2026 and React Summit US 2026, and has
+        previously spoken at JSNation 2025, React India 2025, GDG
+        DevFest Kolkata, and GDG Kolkata Build with AI 2025, among
+        other events — each talk built around a mechanism React
+        developers overlook and the architectural problem it quietly
+        solves. She&apos;s recognised for her contributions to the
+        Kolkata and Indian tech ecosystem by GDG India Women in Tech
+        2026.
       </p>
     </div>
   )

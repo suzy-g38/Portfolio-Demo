@@ -17,7 +17,7 @@ function Hero() {
         height={48}
       />
       <h1>I&apos;m Sulagna</h1>
-      <h3>a frontend developer</h3>
+      <h3>Solutions Engineer &amp; React Kolkata Organiser</h3>
       <Image
         id="bottom-cloud"
         src="/images/cloud.png"
