@@ -7,9 +7,13 @@ Next.js — so the *why* behind each tool is felt, not memorized.
 **Start here:**
 - [`session-plan.md`](session-plan.md) — the timed overview (what
   happens when).
-- [`SCRIPT.md`](SCRIPT.md) — the full word-by-word run of show: exact
-  commands, exact code to type, what to say, what to emphasize, what to
-  skip, and what to cut if you're running behind.
+- [`SCRIPT.md`](SCRIPT.md) — the facilitator's word-by-word run of
+  show: exact commands, exact code to type, what to say, what to
+  emphasize, what to skip, and what to cut if you're running behind.
+- [`STUDENT-GUIDE.md`](STUDENT-GUIDE.md) — the student-facing,
+  copy-paste-and-go version. Share this one directly (attach to slides,
+  drop in chat) — no facilitator notes, just clone → checkout → command
+  → code, stage by stage.
 
 **This is the `main` branch — the home base.** It only holds the
 overview docs. Each stage of the workshop lives on its own branch, so
