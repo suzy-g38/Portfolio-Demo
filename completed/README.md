@@ -44,6 +44,3 @@ npm run dev
    `completed` (not the branch root — that's now where `starter/` also
    lives).
 3. Deploy. No config needed — Vercel auto-detects Next.js.
-
-Full deployment guide (all three stages): see `DEPLOYMENT.md` on the
-`main` branch.
