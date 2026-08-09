@@ -4,8 +4,12 @@ Materials for a 2-hour workshop for 2nd-year students: build the same
 personal portfolio site first in plain HTML/CSS/JS, then React, then
 Next.js — so the *why* behind each tool is felt, not memorized.
 
-**Start here:** [`session-plan.md`](session-plan.md) — the full
-minute-by-minute facilitator script.
+**Start here:**
+- [`session-plan.md`](session-plan.md) — the timed overview (what
+  happens when).
+- [`SCRIPT.md`](SCRIPT.md) — the full word-by-word run of show: exact
+  commands, exact code to type, what to say, what to emphasize, what to
+  skip, and what to cut if you're running behind.
 
 **This is the `main` branch — the home base.** It only holds the
 overview docs. Each stage of the workshop lives on its own branch, so
@@ -35,23 +39,31 @@ has the full walkthrough for all three.
 
 ## Before the session
 
-Each stage branch needs its own `npm install` (React and Next.js
-projects) — `node_modules/` isn't committed. Do this once per branch
-you plan to demo live:
+Set up a worktree per stage branch, so all four are real folders you
+can flip between instantly without ever running `git checkout` live
+(full detail in `SCRIPT.md`'s pre-session setup section):
 
 ```bash
-git checkout 02-react && npm install && cd starter && npm install && cd ..
-git checkout 03-nextjs && npm install && cd starter && npm install && cd ..
-git checkout main
+git worktree add 00-reference-original 00-reference-original
+git worktree add 01-html-css-js 01-html-css-js
+git worktree add 02-react 02-react
+git worktree add 03-nextjs 03-nextjs
+```
+
+Then install dependencies (React and Next.js projects) —
+`node_modules/` isn't committed:
+
+```bash
+cd 02-react && npm install && cd starter && npm install && cd ../..
+cd 03-nextjs && npm install && cd starter && npm install && cd ../..
 ```
 
 Sanity-check each stage's root (the deploy-ready version) runs:
 
 ```bash
-git checkout 01-html-css-js && python3 -m http.server 8001   # http://localhost:8001
-git checkout 02-react && npm run dev                          # http://localhost:5173
-git checkout 03-nextjs && npm run dev                          # http://localhost:3000
-git checkout main
+cd 01-html-css-js && python3 -m http.server 8001   # http://localhost:8001
+cd ../02-react && npm run dev                       # http://localhost:5173
+cd ../03-nextjs && npm run dev                       # http://localhost:3000
 ```
 
 ## Deploying
