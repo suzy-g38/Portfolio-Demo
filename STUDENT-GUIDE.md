@@ -235,16 +235,59 @@ body.dark-mode {
 `completed/` folder — run `cd ../completed` and open `index.html`
 there to compare.
 
+### Deploy it — GitHub Pages
+
+You don't have push access to this shared repo, so to put *your*
+version online you'll push it to a brand-new repo of your own. Make
+sure you're back at the `Portfolio-Demo` folder first (the one
+containing `starter/` and `completed/` — `cd` there if you followed
+the "stuck?" comparison above and ended up in `completed/`), then:
+
+```bash
+cp -r starter ~/my-portfolio-html   # copy your work out of this repo
+cd ~/my-portfolio-html
+git init
+git add .
+git commit -m "My portfolio"
+git branch -M main
+```
+
+*(Windows and not using Git Bash? `cp -r` won't work in plain
+Command Prompt — use PowerShell's `Copy-Item -Recurse starter
+~\my-portfolio-html` instead, or just copy the `starter` folder in
+File Explorer.)*
+
+💡 Consider deleting or rewriting `README.md` in your copied folder
+before pushing — it currently has workshop instructions in it, and
+GitHub shows that file on your new repo's homepage.
+
+Then on GitHub: [github.com/new](https://github.com/new) → create a
+new **empty** repository (don't add a README or .gitignore — you
+already have files to push). Copy the URL it gives you, then:
+
+```bash
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+git push -u origin main
+```
+
+Finally: repo → **Settings → Pages** → Source: **Deploy from a
+branch** → Branch: **main**, folder **/root** → Save. Live at
+`https://<your-username>.github.io/<repo-name>/` within a minute or
+two — no build step needed, since this is plain HTML/CSS/JS.
+
 ---
 
 ## Stage 2 — React
 
-Stop your Stage 1 server (press `Ctrl+C` in its terminal). Then, from
-the `Portfolio-Demo` folder:
+Stop your Stage 1 server (press `Ctrl+C` in its terminal). If you just
+did the deploy walkthrough above, you're currently inside
+`~/my-portfolio-html` — navigate back to the `Portfolio-Demo` folder
+you cloned at the start (e.g. `cd ~/Portfolio-Demo`, adjusted to
+wherever you actually cloned it). From there:
 
 ```bash
-cd ..                    # back to the repo root if you're inside starter/
 git checkout 02-react
+cd starter
 npm install
 ```
 
@@ -255,7 +298,6 @@ depend on packages that aren't stored in the repo itself —
 JavaScript project you'll ever clone.
 
 ```bash
-cd starter
 npm run dev
 ```
 
@@ -333,15 +375,56 @@ Open the finished version's `src/useTheme.js` — it's the exact same
 call. React doesn't replace what you learned in Stage 1 — it organizes
 it.
 
+### Deploy it — Vercel
+
+Same idea as Stage 1: copy your work to its own new repo, then deploy
+from there (back at the `Portfolio-Demo` folder — see the Windows note
+in Stage 1's deploy section if `cp -r` doesn't work for you):
+
+```bash
+cp -r starter ~/my-portfolio-react
+cd ~/my-portfolio-react
+rm -rf node_modules   # don't copy/commit this — it gets regenerated
+git init
+git add .
+git commit -m "My portfolio"
+git branch -M main
+```
+
+Push it to a new GitHub repo the same way as Stage 1 (create an empty
+repo at [github.com/new](https://github.com/new), then
+`git remote add origin ...` and `git push -u origin main`).
+
+Then, instead of GitHub Pages, use **Vercel** — React needs a build
+step first, and Vercel handles that automatically:
+
+1. Go to [vercel.com/new](https://vercel.com/new) and sign in with
+   GitHub.
+2. Import the repo you just pushed.
+3. Vercel auto-detects Vite — click **Deploy**, no configuration
+   needed.
+4. You get a live URL immediately, and it redeploys automatically
+   every time you push again.
+
+💡 **Why Vercel instead of GitHub Pages here?** GitHub Pages only
+serves static files as-is — it can't run a build step. Vercel builds
+your project (`npm run build`) before publishing it. You *can* still
+use GitHub Pages for a React site, but it takes an extra tool (the
+`gh-pages` package) — see `DEPLOYMENT.md` on the `main` branch if
+you'd rather do that.
+
 ---
 
 ## Stage 3 — Next.js
 
-Stop your Stage 2 server. Then:
+Stop your Stage 2 server. If you just did the deploy walkthrough
+above, you're currently inside `~/my-portfolio-react` — navigate back
+to the `Portfolio-Demo` folder you cloned at the start first. From
+there:
 
 ```bash
-cd ..                    # back to the repo root if you're inside starter/
 git checkout 03-nextjs
+cd starter
 rm -rf node_modules
 npm install
 ```
@@ -352,7 +435,6 @@ branch's `package.json` (Next.js instead of plain React + Vite).
 Deleting first guarantees a clean install for this branch.
 
 ```bash
-cd starter
 npm run dev
 ```
 
@@ -388,6 +470,33 @@ Every other component (`Hero`, `About`, `Skills`, `Contact`, `Footer`)
 renders to plain HTML on the server and ships zero JavaScript to your
 browser. That's the core idea behind Next.js: pay the JavaScript cost
 only where you actually need interactivity.
+
+### Deploy it — Vercel
+
+Same copy-to-a-new-repo flow as the last two stages (back at the
+`Portfolio-Demo` folder):
+
+```bash
+cp -r starter ~/my-portfolio-nextjs
+cd ~/my-portfolio-nextjs
+rm -rf node_modules
+git init
+git add .
+git commit -m "My portfolio"
+git branch -M main
+```
+
+Push it to a new empty GitHub repo (same steps as Stage 1 and 2), then:
+
+1. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
+2. Vercel auto-detects Next.js — click **Deploy**, no configuration
+   needed.
+3. Live immediately, and it redeploys automatically on every push.
+
+💡 **Why Vercel and not GitHub Pages at all here?** Next.js features
+like Server Components need an actual server to run, not just static
+files — GitHub Pages can only serve static files. Vercel is built by
+the Next.js team specifically to run this.
 
 ---
 
