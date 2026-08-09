@@ -26,11 +26,15 @@ it can be deployed independently:
 | [`02-react`](../../tree/02-react) | Stage 2: React + Vite | GitHub Pages |
 | [`03-nextjs`](../../tree/03-nextjs) | Stage 3: Next.js (App Router) | Vercel |
 
-On every stage branch, the **repo root is the finished, deploy-ready
-site** — so "deploy from this branch" just works, no subfolder
-juggling. A `starter/` folder inside that same branch holds the
-boilerplate students build from during the session. Switch branches to
-move between stages:
+Every stage branch has the same two sibling folders at its root:
+
+- **`starter/`** — boilerplate with `TODO` comments. Students build
+  here during the session.
+- **`completed/`** — the finished, deploy-ready reference version.
+
+Both exist on disk at once — no branch switching needed to compare
+"what I have" against "what it should look like." Switch branches to
+move between *stages*:
 
 ```bash
 git checkout 01-html-css-js   # now the working directory IS stage 1
@@ -53,12 +57,25 @@ Because of that, only one stage's files exist on disk at a time, and
 each checkout into a React or Next.js branch — plan for that pause
 (it's a good moment to explain *why* `node_modules` isn't committed to
 git in the first place). Sanity-check each stage once beforehand so
-you know installs are fast from local npm cache on the day:
+you know installs are fast from local npm cache on the day (run these
+from inside `completed/` — same idea in `starter/`):
 
 ```bash
-git checkout 01-html-css-js && python3 -m http.server 8001   # http://localhost:8001, no install needed
-git checkout 02-react && npm install && npm run dev            # http://localhost:5173
-git checkout 03-nextjs && rm -rf node_modules && npm install && npm run dev   # http://localhost:3000
+# Stage 1 — from the repo root:
+git checkout 01-html-css-js
+cd completed && python3 -m http.server 8001   # http://localhost:8001, no install needed
+cd ..
+
+# Stage 2 — back at the repo root:
+git checkout 02-react
+cd completed && npm install && npm run dev    # http://localhost:5173
+cd ..
+
+# Stage 3 — back at the repo root:
+git checkout 03-nextjs
+cd completed && rm -rf node_modules && npm install && npm run dev   # http://localhost:3000
+cd ..
+
 git checkout main
 ```
 
@@ -66,13 +83,18 @@ git checkout main
 
 Full steps in [`DEPLOYMENT.md`](DEPLOYMENT.md). Short version:
 
-- **`01-html-css-js`** — GitHub Pages, "Deploy from a branch", branch
-  `01-html-css-js`, folder `/root`. No build step.
-- **`02-react`** — build locally, then `gh-pages` pushes `dist/` to a
-  `gh-pages` branch that Pages serves from. (Or Vercel, if you'd rather
+- **`01-html-css-js`** — GitHub Pages via a small GitHub Actions
+  workflow (already set up at `.github/workflows/pages.yml` on that
+  branch), since the site now lives in `completed/` rather than the
+  branch root and classic "deploy from a branch" mode can't target a
+  subfolder. No build step, just Pages Source set to **GitHub Actions**.
+- **`02-react`** — from inside `completed/`: build locally, then
+  `gh-pages` pushes `dist/` to a `gh-pages` branch that Pages serves
+  from. (Or Vercel with Root Directory `completed`, if you'd rather
   skip the build step entirely — see `DEPLOYMENT.md`.)
-- **`03-nextjs`** — Vercel, Production Branch set to `03-nextjs`. No
-  build step needed locally; Vercel builds it.
+- **`03-nextjs`** — Vercel, Production Branch set to `03-nextjs`,
+  **Root Directory** set to `completed`. No build step needed locally;
+  Vercel builds it.
 
 ## Where the source material came from
 

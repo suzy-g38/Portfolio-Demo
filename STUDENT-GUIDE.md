@@ -231,8 +231,9 @@ body.dark-mode {
 }
 ```
 
-**Stuck at any point?** The finished version is one folder up from
-`starter/` — run `cd ..` and open `index.html` there to compare.
+**Stuck at any point?** The finished version lives in the sibling
+`completed/` folder — run `cd ../completed` and open `index.html`
+there to compare.
 
 ---
 
@@ -284,7 +285,7 @@ Stage 1 — name, role, bio, skills, email).
 
 Open `starter/src/components/Skills.jsx` — notice it's two
 hand-written, nearly identical blocks, one per skill. Now compare it
-to the finished version (`cd ..` from `starter/`, then open
+to the finished version (`cd ../completed` from `starter/`, then open
 `src/components/Skill.jsx` and `src/components/Skills.jsx` there):
 
 ```jsx
@@ -359,8 +360,9 @@ Open **http://localhost:3000** — looks identical to the React version.
 
 ### File-based routing
 
-`cd ..` to the finished version and look at `app/page.js` (this is the
-`/` route) and `app/projects/page.js` (this is the `/projects` route).
+`cd ../completed` to the finished version and look at `app/page.js`
+(this is the `/` route) and `app/projects/page.js` (this is the
+`/projects` route).
 In plain React, adding a second page means installing and configuring
 a router library. Here, a folder (`app/projects/`) containing a
 `page.js` file *is* the route — nothing else to set up.
@@ -394,7 +396,7 @@ only where you actually need interactivity.
 - Every stage's `starter/` folder has its own `README.md` with the
   same instructions plus additional stretch goals.
 - Compare your `starter/` work against the finished version any time —
-  it's one `cd ..` away from wherever you're working.
+  it's the sibling `completed/` folder, one `cd ../completed` away.
 - Want to build your own version from scratch? Fork this repo, or just
   copy a stage's `starter/` folder into a new project of your own.
 - To come back to any stage later: `git checkout <branch-name>` from

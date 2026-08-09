@@ -20,7 +20,10 @@ retyping every line.
 see a branch switch actually change the files on disk in real time.
 Only one stage's files exist at once; see the facilitator checklist at
 the bottom for the transition ritual (stop server → checkout → reinstall
-deps if needed → restart server).
+deps if needed → restart server). Within a stage, `starter/` and
+`completed/` are sibling folders that both exist at once — `starter/`
+is boilerplate students build from, `completed/` is the finished,
+deploy-ready reference. No checkout needed to flip between those two.
 
 ---
 
@@ -44,8 +47,8 @@ students know what "done" looks like before touching a keyboard.
 ## Stage 1 — HTML, CSS & JavaScript (50 min)
 
 **Branch:** `01-html-css-js` (checked out already from the cold open, or
-`git checkout 01-html-css-js` now). Work in `starter/`; the branch
-root (one level up) is the finished "complete" version.
+`git checkout 01-html-css-js` now). Work in `starter/`; its sibling
+`completed/` is the finished version.
 **Format:** hands-on, everyone codes along.
 
 | Time | What |
@@ -65,31 +68,32 @@ one component — but you can't feel the problem until you've written the
 ## Stage 2 — React (30 min)
 
 **Transition ritual first:** stop Stage 1's server (Ctrl+C), `cd` back
-to the repo root if you're inside `starter/`, then:
+to the repo root if you're inside `starter/` or `completed/`, then:
 ```bash
 git checkout 02-react
+cd starter
 npm install
 ```
 Narrate this live — see `SCRIPT.md` for the exact line. The `npm install`
 pause is a natural moment to explain *why* `node_modules` isn't tracked
 by git in the first place (huge, regenerable, differs per branch).
 
-**Branch:** `02-react`. Work in `starter/`; the branch root is the
-finished, deploy-ready version.
+**Branch:** `02-react`. Work in `starter/`; its sibling `completed/` is
+the finished, deploy-ready version.
 **Format:** mostly guided walkthrough. `npm install` (above) is already
 done so no one loses 5 minutes to it mid-flow.
 
 | Time | What |
 |---|---|
 | 5 min | `npm run dev` inside `starter/`, open it in the browser — looks broken/plain, same as Stage 1's starter did. Point out `src/components/` — five files, same five sections as Stage 1's HTML. **"We didn't rewrite the site. We reorganized it."** |
-| 10 min | Open the branch root's `src/components/Footer.jsx` side by side with Stage 1's `js/script.js`. Point at `{new Date().getFullYear()}` vs. `document.getElementById(...).textContent = ...`. Name the shift: *React lets you describe what the UI should show; you stop writing step-by-step DOM instructions.* |
-| 10 min | The big one: open the branch root's `src/components/Skills.jsx` and `Skill.jsx` next to the starter's `Skills.jsx`. Show the array of skill objects + `.map()`. Ask: *"What would Stage 1 look like with 10 skills instead of 2?"* Let that land — that's the whole pitch for components. |
-| 5 min | Quickly show the branch root's `useTheme.js` next to Stage 1's dark-mode code in `js/script.js` — same `localStorage`/`classList` APIs, just packaged as a reusable hook. Reinforces: *React doesn't replace what you learned, it organizes it.* |
+| 10 min | Open `completed/src/components/Footer.jsx`. Point at `{new Date().getFullYear()}` and recall Stage 1's `document.getElementById(...).textContent = ...` from memory (that branch isn't checked out anymore — a good moment to name the tradeoff, see `SCRIPT.md`). Name the shift: *React lets you describe what the UI should show; you stop writing step-by-step DOM instructions.* |
+| 10 min | The big one: open `completed/src/components/Skills.jsx` and `Skill.jsx` next to the starter's `Skills.jsx`. Show the array of skill objects + `.map()`. Ask: *"What would Stage 1 look like with 10 skills instead of 2?"* Let that land — that's the whole pitch for components. |
+| 5 min | Quickly show `completed/src/useTheme.js` — same `localStorage`/`classList` APIs as Stage 1's dark-mode code, just packaged as a reusable hook. Reinforces: *React doesn't replace what you learned, it organizes it.* |
 
-Have students pull up the branch root version and click around (toggle
-dark mode, resize the window) rather than typing all of this from
-scratch — time is better spent reading and reacting than transcribing
-JSX syntax cold.
+Have students pull up `completed/` and click around (toggle dark mode,
+resize the window) rather than typing all of this from scratch — time
+is better spent reading and reacting than transcribing JSX syntax
+cold.
 
 ---
 
@@ -99,6 +103,7 @@ JSX syntax cold.
 repo root, then:
 ```bash
 git checkout 03-nextjs
+cd starter
 rm -rf node_modules
 npm install
 ```
@@ -107,16 +112,16 @@ The `rm -rf node_modules` matters here specifically — React's leftover
 clean reinstall (Stage 1 → 2 didn't need this since Stage 1 has no
 `node_modules` at all).
 
-**Branch:** `03-nextjs`. Work in `starter/`; the branch root is the
-finished, deploy-ready version.
+**Branch:** `03-nextjs`. Work in `starter/`; its sibling `completed/`
+is the finished, deploy-ready version.
 **Format:** guided walkthrough, lighter on typing than even Stage 2.
 
 | Time | What |
 |---|---|
 | 5 min | `npm run dev` inside `starter/`, open it — looks identical to the React version. Ask: *"So why does this exist?"* before answering. |
-| 8 min | Show the file-based routing: the branch root's `app/page.js` is `/`, `app/projects/page.js` is `/projects`. Compare to React: *in plain React, navigating to a second page means adding a router library and configuring it yourself. Here, adding a folder + file is the router.* |
-| 6 min | Show `app/layout.js` and the `metadata` export — point out this is what sets the tab title and meta tags per page, and that it's rendered on the server before the page ever reaches the browser (briefly gesture at "server components" without a deep dive — that's a future-workshop topic). |
-| 6 min | Show `next/image` usage in `app/components/Hero.jsx` vs. a plain `<img>` tag — automatic sizing/optimization is why frameworks like this exist once a site has real content and needs to load fast. |
+| 8 min | Show the file-based routing: `completed/app/page.js` is `/`, `completed/app/projects/page.js` is `/projects`. Compare to React: *in plain React, navigating to a second page means adding a router library and configuring it yourself. Here, adding a folder + file is the router.* |
+| 6 min | Show `completed/app/layout.js` and the `metadata` export — point out this is what sets the tab title and meta tags per page, and that it's rendered on the server before the page ever reaches the browser (briefly gesture at "server components" without a deep dive — that's a future-workshop topic). |
+| 6 min | Show `next/image` usage in `completed/app/components/Hero.jsx` vs. a plain `<img>` tag — automatic sizing/optimization is why frameworks like this exist once a site has real content and needs to load fast. |
 
 **Land the plane:** three tools, one UI. Plain HTML/CSS/JS for anything
 small or a learning exercise. React when the UI has real interactive
@@ -128,22 +133,26 @@ routing, SEO, or server-side rendering out of the box.
 ## Deployment walkthrough (10 min — this one you actually run live)
 
 Each stage lives on its own branch (`01-html-css-js`, `02-react`,
-`03-nextjs`), and the root of that branch is the deploy-ready site — so
-this is a real live deploy, not a slides-only demo. Full commands in
-`DEPLOYMENT.md`. Three flows, one per stage:
+`03-nextjs`), and `completed/` on that branch is the deploy-ready
+site — so this is a real live deploy, not a slides-only demo. Full
+commands in `DEPLOYMENT.md`. Three flows, one per stage:
 
-1. **Stage 1 (HTML/CSS/JS)** → GitHub Pages, "Deploy from a branch" set
-   to `01-html-css-js` / root. No build step — flip the Pages setting
-   live and refresh the URL in front of the room.
-2. **Stage 2 (React)** → `git checkout 02-react` (back to the branch
-   root, out of `starter/`), `npm run deploy` (runs `gh-pages -d dist`
-   under the hood, pushes the build to a `gh-pages` branch) *or* Vercel
-   (zero-config, root directory = whatever you set up).
+1. **Stage 1 (HTML/CSS/JS)** → GitHub Pages via a GitHub Actions
+   workflow (already committed at `.github/workflows/pages.yml` on
+   this branch, since `completed/` isn't at the branch root so classic
+   "deploy from a branch" can't reach it). Set Pages Source to
+   **GitHub Actions**, then push — it deploys automatically. Refresh
+   the URL live in front of the room.
+2. **Stage 2 (React)** → `git checkout 02-react`, `cd completed`,
+   `npm run deploy` (runs `gh-pages -d dist` under the hood, pushes
+   the build to a `gh-pages` branch) *or* Vercel (Root Directory set
+   to `completed`).
 3. **Stage 3 (Next.js)** → Vercel, Production Branch set to
-   `03-nextjs` (this is what Next.js/Vercel are built for together —
-   SSR features need a Node server or Vercel's infrastructure; GitHub
-   Pages can't run them). Push to the branch and watch the deployment
-   happen in the Vercel dashboard live.
+   `03-nextjs`, Root Directory set to `completed` (this is what
+   Next.js/Vercel are built for together — SSR features need a Node
+   server or Vercel's infrastructure; GitHub Pages can't run them).
+   Push to the branch and watch the deployment happen in the Vercel
+   dashboard live.
 
 ---
 
@@ -169,12 +178,18 @@ permanently:
 
 ```bash
 cd TaruGurdian-Session
-git checkout 01-html-css-js && cd starter   # no install needed, static site
-cd ..
-git checkout 02-react && npm install && cd starter && npm install && cd ..
-cd ..
-git checkout 03-nextjs && npm install && cd starter && npm install && cd ..
-cd ..
+git checkout 01-html-css-js   # no install needed, static site
+cd starter && cd ..
+cd completed && cd ..
+
+git checkout 02-react
+cd starter && npm install && cd ..
+cd completed && npm install && cd ..
+
+git checkout 03-nextjs
+cd starter && npm install && cd ..
+cd completed && npm install && cd ..
+
 git checkout 01-html-css-js   # leave it staged on Stage 1, ready for the cold open
 ```
 
