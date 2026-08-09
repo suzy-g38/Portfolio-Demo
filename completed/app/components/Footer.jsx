@@ -14,10 +14,10 @@ function Footer() {
       <a className="footer-link" href="https://www.linkedin.com/">
         LinkedIn
       </a>
-      <a className="footer-link" href="https://github.com/">
+      <a className="footer-link" href="https://github.com/suzy-g38">
         GitHub
       </a>
-      <p className="copyright">© {new Date().getFullYear()} Jamie Chen.</p>
+      <p className="copyright">© {new Date().getFullYear()} Sulagna Ghosh.</p>
     </div>
   )
 }

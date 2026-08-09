@@ -16,7 +16,7 @@ function Hero() {
         width={150}
         height={48}
       />
-      <h1>I&apos;m Jamie</h1>
+      <h1>I&apos;m Sulagna</h1>
       <h3>a frontend developer</h3>
       <Image
         id="bottom-cloud"

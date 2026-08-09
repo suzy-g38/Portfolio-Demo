@@ -4,7 +4,7 @@ import Link from 'next/link'
 // file living at app/projects/page.js is the entire implementation
 // of the /projects route. No router setup, no route config file.
 export const metadata = {
-  title: 'Projects — Jamie Chen',
+  title: 'Projects — Sulagna Ghosh',
   description: 'A few things I have built.',
 }
 

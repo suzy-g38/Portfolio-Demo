@@ -19,7 +19,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata = {
-  title: 'Jamie Chen — Portfolio',
+  title: 'Sulagna Ghosh — Portfolio',
   description:
     'Frontend developer portfolio built with Next.js, as part of a workshop comparing HTML/CSS/JS, React, and Next.js.',
 }

@@ -21,7 +21,7 @@ Then open http://localhost:3000
 3. Stretch goals (see the `TODO` comments in the files themselves):
    - Refactor `Skills.jsx` into a data array + reusable component.
    - Add a second page at `/projects` and link to it with `next/link`.
-   - See the root version (one level up, `../`) for the answers.
+   - See the sibling `../completed/` folder for the answers.
 
 ## Why Next.js, after just finishing React?
 
@@ -32,10 +32,10 @@ Then open http://localhost:3000
   is needed just to display this page (compare to Stage 2, where the
   whole app is a JS bundle that renders in the browser).
 - **Built-in optimization** — fonts (`next/font/google` in `layout.js`)
-  and images (`next/image`, see the root version's `Hero.jsx`) are
-  optimized automatically.
+  and images (`next/image`, see `../completed/app/components/Hero.jsx`)
+  are optimized automatically.
 
 ## Stuck?
 
-Finished version: one level up, at the root of this branch (`../`) —
-that's also the version that gets deployed.
+Finished version: the sibling `../completed/` folder — that's also
+the version that gets deployed.

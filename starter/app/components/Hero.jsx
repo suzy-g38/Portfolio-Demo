@@ -2,7 +2,7 @@
 //
 // Note: if you run the linter, it'll warn that these <img> tags
 // should be next/image instead. That warning is expected here — see
-// ../app/components/Hero.jsx (this branch's root) for the next/image version.
+// ../completed/app/components/Hero.jsx for the next/image version.
 function Hero() {
   return (
     <div className="top-container">

@@ -5,7 +5,7 @@
 // app/page.js) and it's automatically live at /projects — no router
 // library, no config. Then swap this footer's plain <a> tags for
 // Next's <Link href="/projects"> (import Link from 'next/link') to
-// link to it without a full page reload. See ../ (this branch's root) for
+// link to it without a full page reload. See ../completed/ for
 // a working example.
 function Footer() {
   return (

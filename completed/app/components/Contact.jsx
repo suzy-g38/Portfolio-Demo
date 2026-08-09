@@ -7,7 +7,7 @@ function Contact() {
         Have a project in mind, or just want to talk code? My inbox is
         always open.
       </p>
-      <a className="btn" href="mailto:jamie@example.com">
+      <a className="btn" href="mailto:sulagna@example.com">
         CONTACT ME
       </a>
     </div>
