@@ -6,7 +6,7 @@ function Hero({ theme, onToggleTheme }) {
       </button>
       <img id="top-cloud" src="./images/cloud.png" alt="cloud" />
       <h1>I'm Sulagna</h1>
-      <h3>a frontend developer</h3>
+      <h3>Solutions Engineer &amp; React Kolkata Organiser</h3>
       <img id="bottom-cloud" src="./images/cloud.png" alt="cloud" />
       <img id="mountain" src="./images/mountain.png" alt="mountain" />
     </div>
