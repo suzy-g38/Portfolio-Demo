@@ -19,5 +19,6 @@ then see [`starter/README.md`](starter/README.md) for what to do, or
 open [`completed/README.md`](completed/README.md) to see the finished
 version and how it deploys.
 
-Full workshop materials (session plan, facilitator script, student
-guide, deployment steps for all three stages): see the `main` branch.
+Full workshop materials (student guide covering all three stages,
+step by step): see [`STUDENT-GUIDE.md`](../../blob/main/STUDENT-GUIDE.md)
+on the `main` branch.

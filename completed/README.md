@@ -39,6 +39,3 @@ folder on every push to this branch:
    "Deploy from a branch").
 3. The workflow runs automatically and deploys. Live at
    `https://<username>.github.io/<repo>/` within a minute or two.
-
-Full deployment guide (all three stages): see `DEPLOYMENT.md` on the
-`main` branch.
