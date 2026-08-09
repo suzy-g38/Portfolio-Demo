@@ -1,1 +1,6 @@
 .DS_Store
+
+# Facilitator-only materials -- kept locally, not published to GitHub
+DEPLOYMENT.md
+SCRIPT.md
+session-plan.md
