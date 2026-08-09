@@ -1,0 +1,77 @@
+/* ============================================
+   BOILERPLATE — base reset + fonts only.
+   Everything else we build together live!
+   Compare against ../css/style.css (this branch's root)
+   if you get stuck.
+============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #00416d;
+}
+
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-size: 5.62rem;
+  margin-top: 50px;
+}
+
+h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+
+h2 {
+  padding-bottom: 10px;
+}
+
+p {
+  line-height: 2;
+}
+
+a {
+  color: #00416d;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+hr {
+  border: dotted 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto;
+}
+
+/* ============================================
+   TODO — build these together during the session:
+
+   1. .top-container   -> background color, padding,
+                           position: relative (so the
+                           clouds can be absolutely
+                           positioned inside it)
+   2. #top-cloud / #bottom-cloud / #mountain
+                        -> position: absolute + top/
+                           left/right/bottom to place
+                           them like the reference image
+   3. .middle-container -> spacing between sections
+   4. .profile-description -> width + center it
+   5. .skill-row        -> two-column layout using
+                           float or flexbox, so the icon
+                           sits beside the text
+   6. .image-computer / .image-chillies
+                        -> size + float left/right
+   7. .btn / .btn:hover -> the CONTACT ME button —
+                           background, border-radius,
+                           color, hover state
+   8. .bottom-container -> footer background + padding
+   9. .copyright        -> smaller, lighter text
+
+   Reference screenshot: MySite_Page.jpeg on the 00-reference-original branch
+============================================ */

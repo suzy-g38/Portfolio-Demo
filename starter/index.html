@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Sacramento&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- ============================================
+         SECTION 1: HERO
+         TODO: Replace "Your Name" with your name.
+         TODO: Replace "your role" with what you do.
+         The two clouds + mountain images are already
+         linked below — style them in css/style.css.
+    ============================================ -->
+    <div class="top-container">
+      <img id="top-cloud" src="images/cloud.png" alt="cloud">
+      <h1>I'm Your Name</h1>
+      <h3>your role</h3>
+      <img id="bottom-cloud" src="images/cloud.png" alt="cloud">
+      <img id="mountain" src="images/mountain.png" alt="mountain">
+    </div>
+
+    <div class="middle-container">
+
+      <!-- ============================================
+           SECTION 2: ABOUT / HELLO
+           TODO: Write 2-3 sentences about yourself.
+      ============================================ -->
+      <div class="profile">
+        <h2>Hello.</h2>
+        <p class="profile-description">
+          Write a short introduction about yourself here.
+        </p>
+      </div>
+
+      <hr>
+
+      <!-- ============================================
+           SECTION 3: SKILLS
+           TODO: Add your own skills. Duplicate a
+           .skill-row block if you want a third skill.
+           images/computer.png and images/chillies.png
+           are provided as placeholder icons — swap
+           them for your own if you like.
+      ============================================ -->
+      <div class="skills">
+        <h2>My Skills.</h2>
+
+        <div class="skill-row">
+          <img class="image-computer" src="images/computer.png" alt="">
+          <h3>Skill One</h3>
+          <p>Describe this skill and your experience with it.</p>
+        </div>
+
+        <div class="skill-row">
+          <img class="image-chillies" src="images/chillies.png" alt="">
+          <h3>Skill Two</h3>
+          <p>Describe this skill and your experience with it.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- ============================================
+           SECTION 4: CONTACT
+           TODO: Replace the mailto link with your email.
+      ============================================ -->
+      <div class="contact-me">
+        <h2>Get In Touch</h2>
+        <h3>Let's work together.</h3>
+        <p class="contact-message">
+          Feel free to reach out — I'd love to hear from you.
+        </p>
+        <a class="btn" href="mailto:name@email.com">CONTACT ME</a>
+      </div>
+    </div>
+
+    <!-- ============================================
+         SECTION 5: FOOTER
+         TODO: Update links + name. The year is filled
+         in automatically by js/script.js — that's your
+         first taste of JavaScript below!
+    ============================================ -->
+    <div class="bottom-container">
+      <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+      <a class="footer-link" href="https://twitter.com/">Twitter</a>
+      <a class="footer-link" href="https://github.com/">GitHub</a>
+      <p class="copyright">© <span id="year"></span> Your Name.</p>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
