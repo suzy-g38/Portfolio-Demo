@@ -49,5 +49,5 @@ automatically, entirely separate from this one — unaffected by
 Pages** → Source: **Deploy from a branch** → branch **`gh-pages`**,
 folder **`/root`**.
 
-Full deployment guide (all three stages, plus a Vercel alternative for
-this stage): see `DEPLOYMENT.md` on the `main` branch.
+Alternative: Vercel, with **Root Directory** set to `completed` —
+zero-config, no `gh-pages` package needed.
