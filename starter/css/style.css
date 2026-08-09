@@ -49,6 +49,148 @@ hr {
   margin: 100px auto;
 }
 
+.top-container {
+  background-color: #a3d2ca;
+  padding-top: 100px;
+  position: relative;
+}
+
+#top-cloud {
+  position: absolute;
+  right: 250px;
+  top: 50px;
+}
+
+#bottom-cloud {
+  position: absolute;
+  left: 250px;
+  bottom: 300px;
+}
+
+
+/* ---------- Middle sections ---------- */
+
+.middle-container {
+  margin: 100px 0;
+}
+
+.profile-description {
+  margin: auto;
+  width: 50%;
+  max-width: 640px;
+}
+
+.skills {
+  margin-top: 60px;
+}
+
+.skill-row {
+  width: 50%;
+  margin: 100px auto 100px auto;
+  text-align: left;
+  line-height: 2;
+  overflow: auto;
+}
+
+.image-computer {
+  width: 25%;
+  float: left;
+  margin-right: 30px;
+}
+
+.image-chillies {
+  width: 25%;
+  float: right;
+  margin-left: 30px;
+}
+
+.contact-message {
+  width: 40%;
+  margin: 40px auto 60px;
+}
+
+.btn {
+  background: #317599;
+  background-image: linear-gradient(to bottom, #317599, #136875);
+  border-radius: 26px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-image: linear-gradient(to bottom, #2bd6a5, #37c7a3);
+  text-decoration: none;
+}
+
+
+/* ---------- Footer ---------- */
+
+.bottom-container {
+  background-color: #a3d2ca;
+  padding: 50px 0 20px;
+}
+
+.copyright {
+  color: #EAF6F6;
+  font-size: 0.75rem;
+  padding-left: 20px 0;
+}
+
+/* ---------- Dark mode ----------
+   Toggled by js/script.js adding
+   .dark-mode to <body>.
+------------------------------- */
+
+body.dark-mode {
+  background-color: #0f1b26;
+  color: #d7e6ea;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode a,
+body.dark-mode #theme-toggle {
+  color: #d7e6ea;
+}
+
+body.dark-mode #theme-toggle {
+  border-color: #d7e6ea;
+}
+
+body.dark-mode .top-container,
+body.dark-mode .bottom-container {
+  background-color: #16303a;
+}
+
+body.dark-mode .btn {
+  background-image: linear-gradient(to bottom, #1f8a6f, #136875);
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .profile-description,
+  .contact-message {
+    width: 80%;
+  }
+
+  .skill-row {
+    width: 85%;
+  }
+
+  #top-cloud,
+  #bottom-cloud {
+    display: none;
+  }
+}
+
 /* ============================================
    TODO — build these together during the session:
 
